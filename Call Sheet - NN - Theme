@@ -1,0 +1,697 @@
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: sans-serif;
+    font-size: 50%;
+    margin: 2em 0 0 0;
+    padding: 0;
+    overflow:hidden;
+  }
+
+  h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0px;
+    text-transform: capitalize;
+  }
+
+  .subtle {
+    font-style: italic;
+    color: #bbb;
+  }
+
+  dt { float: left; }
+
+  table#legend {
+    background-color:#F6F6F6;
+    box-sizing:border-box;
+    clear: both;
+    margin-top:10px;
+    padding:10px;
+    width: 100%;
+  }
+
+  .individuals {
+    border-collapse: collapse;
+    border-bottom: 1px solid black;
+  }
+
+  .individual > td {
+    border-top: 1px solid black;
+  }
+
+  .individual.household-member > td {
+    border-top: 1px solid #e8e8e8;
+  }
+
+  .individual td {
+    vertical-align: top;
+    padding: 5px 2px;
+    font-size: 11px;
+    line-height: 12px;
+  }
+
+  .individual td h3 {
+    font-size: .9em;
+    text-transform: uppercase;
+  }
+
+  .width-5 {
+    width: 5%;
+  }
+  .width-10 {
+    width: 10%;
+  }
+  .width-15 {
+    width: 15%;
+  }
+  .width-20 {
+    width: 20%;
+  }
+  .width-25 {
+    width: 25%;
+  }
+  .width-30 {
+    width: 30%;
+  }
+  .width-35 {
+    width: 35%;
+  }
+  .width-40 {
+    width: 40%;
+  }
+  .width-45 {
+    width: 45%;
+  }
+  .width-50 {
+    width: 50%;
+  }
+  .width-55 {
+    width: 55%;
+  }
+  .width-60 {
+    width: 60%;
+  }
+  .width-65 {
+    width: 65%;
+  }
+  .width-70 {
+    width: 70%;
+  }
+  .width-75 {
+    width: 75%;
+  }
+  .width-80 {
+    width: 80%;
+  }
+  .width-85 {
+    width: 85%;
+  }
+  .width-90 {
+    width: 90%;
+  }
+  .width-95 {
+    width: 95%;
+  }
+  .width-100 {
+    width: 100%;
+  }
+
+  small {
+    display: block;
+  }
+
+  .logo {
+    float: left;
+    width: 60px;
+    margin-right: 50px;
+  }
+
+  .fill-in-the-blank {
+    padding-bottom: .25em;
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-style: italic;
+    color: #AAA;
+  }
+
+  .meta {
+    margin-top: 5px;
+  }
+
+  .meta > div {
+    height: 30px;
+    padding: 3px;
+  }
+
+  .meta h3 {
+    font-size: 8px;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .date {
+    border-left: 1px solid black;
+  }
+
+  .date,
+  .start-time {
+    float: left;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  .canvasser-name {
+    float: right;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  .blank-field,
+  .checkbox-field {
+    position: relative;
+    margin-bottom: 6px;
+    padding-left: 15px;
+  }
+
+  .blank-field:last-child,
+  .checkbox-field:last-child {
+    margin: 0;
+  }
+
+  .blank,
+  .checkbox {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -5px;
+    text-align: center;
+  }
+
+  .blank {
+    width: 12px;
+    height: 11px;
+    padding-bottom: 2px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid black;
+    font-size: 7px;
+    line-height: 9px;
+  }
+
+  .checkbox {
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    font-size: 7px;
+    line-height: 9px;
+  }
+
+  .name h3 {
+    margin-bottom: 0;
+  }
+
+  .name p {
+    margin: 0 0 10px;
+  }
+
+  .name small {
+    color: #AAA;
+  }
+
+  .support {
+    text-align: center;
+  }
+
+  .support p {
+    margin: 0;
+  }
+
+  .support-o-meter {
+    display: inline-block;
+  }
+
+  .support-level {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid black;
+    font-size: 8px;
+    line-height: 10px;
+    color: #AAA;
+  }
+
+  .current {
+    background-color: black;
+    color: white;
+  }
+
+  .id {
+    float: right;
+    padding-right: 1.5em;
+  }
+
+  .address h4,
+  .contact h4,
+  .name h4 {
+    display: inline-block;
+    font-weight: bold;
+    font-style: italic;
+    color: #AAA;
+  }
+
+  .policy td {
+    padding-top: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+
+  .policy td:last-child {
+    padding-left: 3px;
+    padding-right: 0;
+  }
+
+  .policy .comma:last-child {
+    display: none;
+  }
+
+  .issues {
+    font-size: .8em;
+  }
+
+  .black-bg {
+    background-color: black;
+    color: white;
+  }
+
+  .new {
+    font-style: italic;
+  }
+
+  .legend {
+    font-size: 65%;
+  }
+
+  .legend small {
+    font-size: 33.33%;
+    font-style: italic;
+    font-weight: normal;
+  }
+
+  .vote-date {
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+  }
+
+  .note {
+    font-style:italic;
+    color:#666;
+    font-weight:lighter;
+    width:150px;
+  }
+  
+  .cover-page {
+    font-size:20px;
+    text-align:center;
+  }
+
+  ol.streets {
+    color:#333;
+    display:inline-block;
+    float:left;
+    font-size:12px;
+    list-style-position: inside;
+    margin:0 5% 0 0;
+    padding:0;
+    text-transform:capitalize;
+  }
+
+  ol.streets li {
+    background-color:#333;
+    color:#FFF;
+    margin-top:0;
+    margin-bottom:3px;
+    padding:3px;
+    page-break-inside:avoid;
+    text-align:left;
+  }
+
+  .street-label {
+    display:inline-block;
+    margin-top:30px;
+    border-top:1px solid #666;
+    border-bottom:1px solid #CCC;
+    text-transform:capitalize;
+  }
+
+  .sheet {
+    margin-top: 30px;
+  }
+
+  .listings .street h1, .listings .street h2, {
+    text-align: left !important;
+    margin-left:10px !important;
+  }
+
+  .listings {
+    box-sizing:border-box;
+    display:block;
+  }
+
+  .listings:first-child {
+    margin-top: 0;
+  }
+
+  #map {
+    float:right;
+    width:70%;
+  }
+  
+  table {
+    font-size:10px;
+  }
+
+  table.listing {
+    width:100%;
+    font-size:10px;
+    border-collapse:collapse;
+  }
+
+  table.listing:nth-child(odd) {
+    background-color:#F6F6F6;
+  }
+
+  table.listing ul {
+    padding-left:0;
+    list-style-type:circle;
+  }
+
+  table.listing ul li {
+    display:inline-block;
+    list-style:none;
+    vertical-align:top;
+  }
+
+  table.listing > tbody tr td {
+    vertical-align:top;
+    padding:1%;
+    border-top:2px solid #666;
+  }
+
+  table.listing.same-address > tbody tr td {
+    border-top-style:dashed;
+  }
+
+  table.listing:first-child > tbody tr td {
+    border-top:none;
+  }
+
+  table.listing .address {
+    margin:10px 0 0;
+    font-style:italic;
+    text-transform:capitalize;
+  }
+
+  table.listing .blocks {
+    margin-bottom:10px;
+  }
+
+  table.fill-in-fields {
+    width:100%;
+  }
+
+  table.fill-in-fields td {
+    padding-bottom:10px;
+    vertical-align:middle;
+    border-top:none !important;
+  }
+
+  table.fill-in-fields td:nth-child(even) {
+    border-bottom:1px solid #333;
+    width:4cm;
+  }
+
+  .data-box {
+    display:inline-block;
+    margin-right:3px;
+    padding:1px 3px;
+    color:#FFF;
+    background-color:#666;
+  }
+
+  .data-box .value {
+    font-weight:bold;
+  }
+
+  .line-break {
+    height:1px;
+    background-color:#CCC;  
+    margin:5px 0;
+  }
+
+  .dont-break {
+    page-break-inside:avoid;
+  }
+
+  .dont-break-after {
+    page-break-after:avoid;
+  }
+
+  .break-after {
+    page-break-after:always;
+  }
+
+  .break-if-needed {
+    page-break-after:auto;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .align-bottom {
+    vertical-align: bottom;
+  }
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+    *zoom: 1;
+}
+
+</style>
+
+<html>
+<head></head>
+<body>
+
+ {% comment %}
+  <div class="cover-page break-after">
+    <h1>{{list.name}}</h1>
+    <p>{{list.description}}</p>
+
+    <div>
+      <div style="width:20%">
+        <ol type="A" class="streets">
+          {% for address in list.addresses_by_street limit:20 %}
+            <li>{{address.street}}</li>
+          {% endfor %}
+        </ol>
+        {% if list.addresses_by_street.length > 20 %}
+          <p style="color: red;">Showing the first 20 streets</p>
+        {% endif %}
+      </div>
+
+      {{list.map}}
+
+      <div class="line-break"></div>
+    </div>
+
+    <table id="legend">
+      <tr>
+        <td>
+          <h4>Contact details</h4>
+          <dt>E</dt> <dd>Email</dd>
+          <dt>P</dt> <dd>Phone</dd>
+          <dt>M</dt> <dd>Mobile</dd>
+        </td>
+        <td>
+          <h4>Sign tags</h4>
+          <dt>X</dt> <dd>Lawn_sign</dd>
+          <dt>sm</dt> <dd>Sign-sm</dd>
+          <dt>lg</dt> <dd>Sign-lg </dd>
+          <dt>cor</dt> <dd>Sign-corner</dd>
+          <dt>apt</dt> <dd>Sign-apartment</dd>
+        </td>
+        <td>
+          <h4>Volunteers</h4>
+          <dt>x</dt> <dd>Is a volunteer</dd>
+        </td>
+        <div class="clearfix"></div>
+      </tr>
+    </table>
+
+    <div class="line-break"></div>
+  </div>
+ {% endcomment %}
+  
+  {% assign previous_address = false %}
+  {% assign household_member = false %}
+  
+  <div class="listings">
+    {% for sheet in sheets %}
+    <div class="sheet dont-break {% if theme.each_group_own_page %}{% unless forloop.last %}break-after{% endunless %}{% endif %}">
+      <div class="dont-break-after clearfix">
+        <h2>{{list.slug}}{{sheet.key}}</h2>
+      </div>
+      <div class="meta group">
+        <div class="date width-15">
+          <h3>Date</h3>
+        </div>
+        <div class="start-time width-15">
+          <h3>Start time</h3>
+        </div>
+        <div class="canvasser-name width-25">
+          <h3>Canvasser first/last name</h3>
+        </div>
+      </div>
+      <table class="dont-break width-100 individuals">
+      {% for signup in sheet.signups %}
+
+        {% assign this_address = signup.address %}
+
+        {% if this_address.address1 == previous_address.address1 and this_address.address2 == previous_address.address2 %}
+          {% assign household_member = true %}
+        {% endif %}
+
+        <tr class="individual{% if household_member %} household-member{% endif %} dont-break">
+          <td class="address width-20">
+          {% unless household_member %}
+            <em>{{ signup.address.address1 }}</em><br>
+            {% if signup.address.address2 %}
+              <strong>{{ signup.address.address2 }}</strong>
+            {% endif %}
+          {% endunless %}
+           <dl>
+               <dt>__Ans  __No Ans</dt>
+               <dt>__Bad __Msg</dt>
+               <dt>__Not_Int</dt>
+           </dl>
+          </td>
+
+          <td class="name width-30">
+            {{ signup.last_name | upcase }}, {{ signup.first_name }} <span class="id">ID: {{ signup.id }}</span>
+            <div class="contact-field">
+              <h4>E:</h4> {{ signup.email }}
+            </div>
+            <div class="contact-field">
+              <h4>P:</h4> {{ signup.phone_number }}
+            </div>
+            <div class="contact-field">
+              <h4>M:</h4> {{ signup.mobile_number }}
+            </div>
+          </td>
+
+          <td class="policy width-15">
+            <h3>Issues</h3>
+            <div class="issues">
+              {% for tag in signup.tags %}
+                {% if tag contains "issue_" %}
+                  {% assign issue_trimmed = tag | replace: "issue_", "" %}
+                  {% assign issue = issue_trimmed | replace: "_", " " %}
+                  <span class="issue">{{ issue }}</span><span class="comma">,</span>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </td>
+
+          <td class="support-1 width-15">
+            <div class="support">
+              <h3>Support Level</h3>
+              <div class="support-o-meter">
+                <div class="support-level{% if signup.support_level == 1 %} current{% endif %}">
+                  1
+                </div>
+                <div class="support-level{% if signup.support_level == 2 %} current{% endif %}">
+                  2
+                </div>
+                <div class="support-level{% if signup.support_level == 3 %} current{% endif %}">
+                  3
+                </div>
+                <div class="support-level{% if signup.support_level == 4 %} current{% endif %}">
+                  4
+                </div>
+                <div class="support-level{% if signup.support_level == 5 %} current{% endif %}">
+                  5
+                </div>
+              </div>
+              <p>
+                <small>(1 Support – 5 Oppose)</small>
+              </p>
+            </div>
+          </td>
+
+          <td class="signup width-10">
+            <div class="blank-field">
+            {% assign sign_tag = false %}
+            {% for tag in signup.tags %}
+              {% assign tag_downcase = tag | downcase %}
+              {% assign tag_downcase_replaced = tag_downcase | replace:"-", "_" %}
+              {% if tag_downcase_replaced contains "_sign" or tag_downcase contains "sign_" %}
+                {% if tag_downcase == "vol_sign" %}
+                  {% assign sign_tag = "X" %}
+                {% elsif tag_downcase == "lawn_sign" %}
+                  {% assign sign_tag = "X" %}
+                {% elsif tag_downcase == "sign_sm" %}
+                  {% assign sign_tag = "sm" %}
+                {% elsif tag_downcase == "sign_lg" %}
+                  {% assign sign_tag = "lg" %}
+                {% elsif tag_downcase == "sign_corner" %}
+                  {% assign sign_tag = "cor" %}
+                {% elsif tag_downcase == "sign_apartment" %}
+                  {% assign sign_tag = "apt" %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+              <span class="blank">{% if sign_tag %}{{ sign_tag }}{% endif %}</span>
+              <span class="text">Lawn Sign</span>
+            </div>
+            <div class="checkbox-field">
+              <span class="checkbox">{% if signup.is_volunteer? %}X{% endif %}</span>
+              <span class="text">Volunteer</span>
+            </div>
+          </td>
+
+          <td class="notes width-20">
+            <h3 class="subtle">Notes</h3>
+          </td>
+        </tr>
+
+        {% assign previous_address = this_address %}
+        {% assign household_member = false %}
+
+        {% endfor %}
+      </table>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
